@@ -64,6 +64,121 @@ Luego accede en el navegador a: `http://localhost:5173`
 npx json-server db.json --port 3000
 ```
 
+## 🎬 Demo Funcional
+
+### Paso 1: Acceder a la Aplicación
+1. Abre `http://localhost:5173` en tu navegador
+2. Deberías ver la página de inicio (Home)
+
+### Paso 2: Login
+1. Haz clic en **"Iniciar sesión"** (arriba a la derecha)
+2. Usa las credenciales de prueba:
+   - **Email:** `juan@correo.com`
+   - **Contraseña:** `123456`
+3. ✅ Deberías ver el nombre "Juan Pedro" en el menú superior
+4. Serás redirigido automáticamente a la página de inicio
+
+### Paso 3: Gestión de Usuarios
+1. Haz clic en **"Usuarios"** en el menú
+2. **Listar usuarios:**
+   - Verás Juan Pedro, Patricia y Alejandra
+   - Prueba la búsqueda escribiendo un nombre
+3. **Crear nuevo usuario:**
+   - Haz clic en **"Nuevo"**
+   - Completa: Nombre, Email, Contraseña
+   - Haz clic en **"Guardar"**
+4. **Editar usuario:**
+   - Haz clic en **"editar"** en cualquier fila
+   - Modifica los datos
+   - Haz clic en **"Guardar"**
+5. **Eliminar usuario:**
+   - Haz clic en **"eliminar"**
+   - Confirma la acción
+
+### Paso 4: Gestión de Créditos
+1. Haz clic en **"Creditos"** en el menú
+2. **Listar créditos:**
+   - Verás 5 créditos disponibles
+   - Observa el **"Saldo Crédito"**
+3. **Filtrar por estado:**
+   - Selecciona **"Sí cancelado"** en el dropdown
+   - Haz clic en **"Filtrar"**
+   - Verás solo créditos cancelados (si hay)
+4. **Buscar por asesor:**
+   - Escribe un nombre en "Buscar por asesor de credito"
+   - Haz clic en **"Buscar"**
+5. **Crear crédito:**
+   - Haz clic en **"Nuevo"**
+   - Selecciona Asesor, ingresa Monto, Descripción, Tasa de Interés
+   - Haz clic en **"Guardar"**
+6. **Ver pagos del crédito:**
+   - Haz clic en **"Ver Pagos"** en la columna de Acciones
+   - Se abrirá una página con los pagos del crédito
+
+### Paso 5: Gestión de Pagos (Funcionalidad Especial)
+1. Haz clic en **"Pagos"** en el menú
+2. **Listar pagos:**
+   - Verás 2 pagos existentes
+   - Observa que el **Saldo** del crédito 101 fue reducido
+3. **Filtrar por método:**
+   - Selecciona **"Transferencia"** en el dropdown
+   - Haz clic en **"Filtrar"**
+4. **Buscar por ID de crédito:**
+   - Escribe "101" en "Buscar por ID de crédito"
+   - Haz clic en **"Buscar"**
+5. **Crear pago (DEMO DE SALDO AUTOMÁTICO):**
+   - Haz clic en **"Nuevo"**
+   - **Crédito:** 101 (Saldo actual: ~6199)
+   - **Monto Cuota:** 500
+   - **Método:** Transferencia
+   - **Comprobante:** TEST-001
+   - Haz clic en **"Guardar"**
+   - ✅ **Resultado esperado:** El saldo del crédito 101 baja a 5699
+6. **Editar pago (RECALCULACIÓN):**
+   - Haz clic en **"editar"** en un pago
+   - Cambia el **Monto Cuota** a 600
+   - Haz clic en **"Guardar"**
+   - ✅ **Resultado esperado:** El saldo se recalcula considerando el cambio
+7. **Eliminar pago (RESTAURACIÓN):**
+   - Haz clic en **"eliminar"** en un pago
+   - Confirma
+   - ✅ **Resultado esperado:** El saldo del crédito vuelve a aumentar
+
+### Paso 6: Ver Créditos por Usuario
+1. Haz clic en **"Usuarios"** en el menú
+2. En cualquier usuario, haz clic en **"Ver Créditos"**
+3. Verás solo los créditos asociados a ese usuario
+
+### Paso 7: Logout
+1. En el menú superior derecha, haz clic en **"Cerrar sesión"**
+2. Serás redirigido a la página de login
+3. ✅ El nombre del usuario desaparecerá del menú
+
+### Paso 8: Registrarse
+1. En la página de login, haz clic en **"Registrarme"**
+2. Completa: Nombre, Email, Contraseña, Confirmar Contraseña
+3. Haz clic en **"Guardar"**
+4. ✅ Deberías ser redirigido a la página de inicio como usuario logueado
+
+## 🔑 Puntos Clave de la Demo
+
+### 🎯 Funcionalidad Crítica - Actualización de Saldo
+Este es el corazón del proyecto. Cada operación de pago actualiza automáticamente:
+
+| Operación | Acción | Saldo |
+|-----------|--------|-------|
+| **Crear Pago** | `POST /pagos` | `saldo = saldo - monto_cuota` |
+| **Editar Pago** | `PATCH /pagos/:id` | `saldo = saldo + montoAnterior - montoNuevo` |
+| **Eliminar Pago** | `DELETE /pagos/:id` | `saldo = saldo + monto_cuota` |
+| **Saldo = 0 o menos** | Automático | `cancelado = true` |
+
+### 📊 Datos Consistentes
+- Busca siempre en DevTools (F12) → Application → LocalStorage
+- Verifica que `token` y `userName` se actualicen al login
+- Recarga la página (Ctrl+F5) para verificar persistencia
+
+
+
 ## 👤 Usuarios de Prueba
 
 | Email | Contraseña | Nombre |
