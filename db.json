@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "juan@correo.com",
+      "password": "123456",
+      "nombre": "Juan Pérez",
+      "name": "Juan Pedro"
+    },
+    {
+      "email": "patricia@email.com",
+      "password": "123456",
+      "name": "Patricia",
+      "id": 2
+    },
+    {
+      "email": "ale@email.com",
+      "password": "$2a$10$qYN3WGdqaRkJot0opyY7kOdSN6yme./y1LqiKUF6/T/Iwcypi2yEm",
+      "name": "Alejandra",
+      "id": 3
+    }
+  ],
+  "creditos": [
+    {
+      "id": 101,
+      "userId": 1,
+      "monto_prestado": "7000",
+      "descripcion": "Crédito Automotriz",
+      "tasa_interes": 12,
+      "saldo": 7000,
+      "cancelado": false
+    },
+    {
+      "userId": 2,
+      "monto_prestado": "10000",
+      "descripcion": "Credito de consumo",
+      "tasa_interes": "17",
+      "id": 102,
+      "saldo": 10000,
+      "cancelado": false
+    },
+    {
+      "userId": 2,
+      "monto_prestado": "30000",
+      "descripcion": "Credito agropecuario",
+      "tasa_interes": "10",
+      "id": 103,
+      "saldo": 30000,
+      "cancelado": false
+    },
+    {
+      "userId": 1,
+      "monto_prestado": "45000",
+      "descripcion": "Credito de consumo",
+      "tasa_interes": "17",
+      "saldo": "45000",
+      "cancelado": false,
+      "id": 104
+    }
+  ],
+  "pagos": [
+    {
+      "id": 1,
+      "creditoId": 101,
+      "monto_cuota": 450.5,
+      "fecha": "2026-04-01",
+      "metodo": "Transferencia",
+      "comprobante": "TRANS-8822"
+    },
+    {
+      "id": 2,
+      "creditoId": 101,
+      "monto_cuota": "350",
+      "fecha": "2026-05-01",
+      "metodo": "QR",
+      "comprobante": "QR-1100"
+    }
+  ]
+}

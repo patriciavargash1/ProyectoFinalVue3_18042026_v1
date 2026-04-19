@@ -1,0 +1,60 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "email": "admin@parking.com",
+        "password": "123456",
+        "role": "admin"
+      },
+      {
+        "id": 2,
+        "email": "user@parking.com",
+        "password": "123456",
+        "role": "user"
+      }
+    ],
+    "carTypes": [
+      {
+        "id": 1,
+        "name": "Sedan"
+      },
+      {
+        "id": 2,
+        "name": "SUV"
+      },
+      {
+        "id": 3,
+        "name": "Moto"
+      }
+    ],
+    "cars": [
+      {
+        "id": 1,
+        "plate": "123-ABC",
+        "typeId": 1,
+        "userId": 2
+      },
+      {
+        "id": 2,
+        "plate": "456-DEF",
+        "typeId": 2,
+        "userId": 2
+      }
+    ],
+    "parkingRecords": [
+      {
+        "id": 1,
+        "carId": 1,
+        "entryTime": "2026-04-01T08:00:00",
+        "exitTime": "2026-04-01T10:00:00",
+        "status": "completed"
+      },
+      {
+        "id": 2,
+        "carId": 2,
+        "entryTime": "2026-04-01T09:00:00",
+        "exitTime": null,
+        "status": "active"
+      }
+    ]
+  }
