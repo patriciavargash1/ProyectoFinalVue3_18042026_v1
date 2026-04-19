@@ -25,9 +25,10 @@ Aplicación web desarrollada con **Vue 3** y **TypeScript** para gestionar usuar
 
 ## 🚀 Instalación
 
-1. **Descargar/Clonar el proyecto**
+1. **Clonar el proyecto desde GitHub**
 ```bash
-cd proyecto_final
+git clone https://github.com/patriciavargash1/ProyectoFinalVue3_18042026_v1.git
+cd ProyectoFinalVue3_18042026_v1
 ```
 
 2. **Instalar dependencias**
@@ -39,7 +40,7 @@ npm install
 El archivo `.env` está preconfigurado:
 ```
 VITE_API_URL=http://localhost:3000
-VITE_TIMEOUT=3001
+VITE_TIMEOUT=3000
 ```
 
 ## 🏃 Ejecución
@@ -250,17 +251,6 @@ npm run type-check   # Verifica tipos TypeScript
 - Verifica que json-server esté corriendo en puerto 3000
 - Comprueba que .env tenga `VITE_API_URL=http://localhost:3000`
 - Recarga la página (Ctrl+F5)
-
-### No muestra usuario logueado en menú
-- Abre DevTools → Application → LocalStorage
-- Verifica que exista key `token`
-- Recarga la página
-
-### Puerto 3000 en uso
-```bash
-npx json-server db.json --port 3001
-# Actualiza .env: VITE_API_URL=http://localhost:3001
-```
 
 ## 📚 Recursos Útiles
 
